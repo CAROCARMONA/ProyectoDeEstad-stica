@@ -40,7 +40,7 @@ namespace APPEstadistica11
                 totalx += TRIMESTERS[i];
             }
 
-            double promedioY = totaly / 12;//promedio de ventas trimestral
+            double promedioY = Math.Round(totaly / 12);//promedio de ventas trimestral
            
 
             for (int i = 0; i < 12; i=i+4)
