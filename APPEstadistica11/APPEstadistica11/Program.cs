@@ -18,8 +18,8 @@ namespace APPEstadistica11
             FunRegreLin f = new FunRegreLin(SalesXthree, Trimesters);
 
             double[] PRO = f.Regresionlineal();
-            Console.Write("Pronostico");
-            for (int i = 0; i < 12; i++)
+      
+            for (int i = 0; i < SalesXthree.Length; i++)
             {
                 //opcional quitar la parte decimal
                 Console.WriteLine("Pronostico" +Math.Round( PRO[i]) + " mes " + Trimesters[i]);

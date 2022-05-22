@@ -19,31 +19,31 @@ namespace APPEstadistica11
         public double[] Regresionlineal()
         {
            
-            double[] Iestacional = new double[12];
-            double[] Desestacionalizar=new double[12];
+            double[] Iestacional = new double[SALES.Length];
+            double[] Desestacionalizar=new double[SALES.Length];
             double totalx = 0;//marca de clase
             double totaly = 0;//total de ventas
 
             double totalDES = 0;//total de y dessestacionalizada
 
-            double[] XX = new double[12];
-            double[] XY = new double[12];
+            double[] XX = new double[SALES.Length];
+            double[] XY = new double[SALES.Length];
             double totalXX = 0;//total de ventas XX
             double totalXY = 0;//total de ventas XY
 
-            double[] Regresion = new double[12];
-            double[] Pronostico = new double[12];
+            double[] Regresion = new double[SALES.Length];
+            double[] Pronostico = new double[SALES.Length];
 
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < SALES.Length; i++)
             {
                 totaly += SALES[i];
                 totalx += TRIMESTERS[i];
             }
 
-            double promedioY =totaly / 12;//promedio de ventas trimestral
+            double promedioY =totaly / SALES.Length;//promedio de ventas trimestral
            
 
-            for (int i = 0; i < 12; i=i+4)
+            for (int i = 0; i < SALES.Length; i=i+4)
             {
                 //                 Promedio trimestrales especifico       iestacional
                 Iestacional[i] = ((SALES[0] + SALES[4] + SALES[8]) /3) /promedioY;
@@ -53,7 +53,7 @@ namespace APPEstadistica11
 
             } 
 
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < SALES.Length; i++)
             {
                 Desestacionalizar[i] = SALES[i] / Iestacional[i];
                 totalDES+=Desestacionalizar[i];//sumatoria de todas la y desestacionalizdas
@@ -65,11 +65,11 @@ namespace APPEstadistica11
                 totalXY += XY[i];
             }
             //regresion ecuacion a y b
-            double a =((totalDES*totalXX)-(totalx*totalXY))/((12*totalXX)-(totalx*totalx));
-            double b = ((12*totalXY)-(totalx*totalDES))/ ((12 * totalXX) - (totalx * totalx));
+            double a =((totalDES*totalXX)-(totalx*totalXY))/((SALES.Length*totalXX)-(totalx*totalx));
+            double b = ((SALES.Length * totalXY)-(totalx*totalDES))/ ((SALES.Length * totalXX) - (totalx * totalx));
 
             // y =a + b X
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < SALES.Length; i++)
             {
                 Regresion[i] = a + b * TRIMESTERS[i];
                 Pronostico[i] = Regresion[i] * Iestacional[i];
