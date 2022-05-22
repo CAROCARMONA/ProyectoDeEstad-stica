@@ -40,7 +40,7 @@ namespace APPEstadistica11
                 totalx += TRIMESTERS[i];
             }
 
-            double promedioY = Math.Round(totaly / 12);//promedio de ventas trimestral
+            double promedioY =totaly / 12;//promedio de ventas trimestral
            
 
             for (int i = 0; i < 12; i=i+4)
@@ -59,9 +59,9 @@ namespace APPEstadistica11
                 totalDES+=Desestacionalizar[i];//sumatoria de todas la y desestacionalizdas
 
                 // x a la 2    y     XY
-                XX[i] = i * i;
+                XX[i] = TRIMESTERS[i] * TRIMESTERS[i];
                 totalXX += XX[i];
-                XY[i] = i * Desestacionalizar[i];
+                XY[i] = TRIMESTERS[i] * Desestacionalizar[i];
                 totalXY += XY[i];
             }
             //regresion ecuacion a y b

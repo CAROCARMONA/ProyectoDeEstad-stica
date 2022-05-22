@@ -21,7 +21,8 @@ namespace APPEstadistica11
             Console.Write("Pronostico");
             for (int i = 0; i < 12; i++)
             {
-                Console.WriteLine("Pronostico" +Math.Round( PRO[i]) + " mes" + Trimesters[i]);
+                //opcional quitar la parte decimal
+                Console.WriteLine("Pronostico" +Math.Round( PRO[i]) + " mes " + Trimesters[i]);
 
             }
 
