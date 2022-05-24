@@ -1,24 +1,28 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace APPEstadistica11
 {
     class FunRegreLin
     {
         private double[] SALES;
-        private int[] TRIMESTERS;
-        public FunRegreLin (double[]sales,int[] trimesters)
+        public double[] Regresion;
+
+        public FunRegreLin (double[]sales)
         {
             this.SALES = sales;
-            this.TRIMESTERS = trimesters;
+            Regresion = new double[SALES.Length];
         }
         //promedio trimestral de las ventas
+        public double[] VERsales { get => SALES; set => SALES =value; }
+
         public double[] Regresionlineal()
         {
-           
+            int[] TRIMESTERS = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 };
+
+            //double[] Regresion = new double[SALES.Length];
+            double[] Pronostico = new double[SALES.Length];
+
             double[] Iestacional = new double[SALES.Length];
             double[] Desestacionalizar=new double[SALES.Length];
             double totalx = 0;//marca de clase
@@ -31,8 +35,7 @@ namespace APPEstadistica11
             double totalXX = 0;//total de ventas XX
             double totalXY = 0;//total de ventas XY
 
-            double[] Regresion = new double[SALES.Length];
-            double[] Pronostico = new double[SALES.Length];
+          
 
             for (int i = 0; i < SALES.Length; i++)
             {
@@ -71,12 +74,16 @@ namespace APPEstadistica11
             // y =a + b X
             for (int i = 0; i < SALES.Length; i++)
             {
+                
                 Regresion[i] = a + b * TRIMESTERS[i];
                 Pronostico[i] = Regresion[i] * Iestacional[i];
             }
 
+          
+
             return Pronostico;
 
+            
         }
 
 
