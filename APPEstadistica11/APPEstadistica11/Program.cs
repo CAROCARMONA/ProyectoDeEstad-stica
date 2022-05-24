@@ -15,8 +15,9 @@ namespace APPEstadistica11
             for (int i = 0; i < SalesXthree.Length; i++)
             {
                 //opcional quitar la parte decimal
-                Console.WriteLine("Pronostico" +Math.Round( PRO[i]) + " trimestre " +(i+1));
+                Console.WriteLine("Pronostico " +Math.Round( PRO[i]) + " trimestre " +(i+1));
                 Console.WriteLine("regre" + f.Regresion[i]);
+                Console.WriteLine("ventas" + f.VERsales[i]);
             }
             
            
